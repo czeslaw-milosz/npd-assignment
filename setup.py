@@ -9,6 +9,7 @@ setup(
     license="LICENSE.txt",
     description="Final assignment for Data Analysis in Python course @ MIM UW",
     install_requires=[
+        "argparse",
         "numpy",
         "pandas",
         "pytest",
