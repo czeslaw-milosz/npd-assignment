@@ -4,19 +4,22 @@ import argparse
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-g", "--gdp_file",
+        "-g",
+        "--gdp_file",
         type=str,
         required=True,
         help="Path to .csv file containing the GDP data.",
     )
     parser.add_argument(
-        "-p", "--population_file",
+        "-p",
+        "--population_file",
         type=str,
         required=True,
         help="Path to .csv file containing the population data.",
     )
     parser.add_argument(
-        "-e", "--emissions_file",
+        "-e",
+        "--emissions_file",
         type=str,
         required=True,
         help="Path to .csv file containing the emissions data.",
