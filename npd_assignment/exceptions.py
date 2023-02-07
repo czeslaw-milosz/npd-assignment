@@ -1,6 +1,6 @@
 from typing import Tuple, Optional
 
-from .config import CONFIG
+from npd_assignment.config import CONFIG
 
 
 class EmptyIntervalException(Exception):

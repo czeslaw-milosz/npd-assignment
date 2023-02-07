@@ -3,9 +3,9 @@ import logging
 
 import tabulate
 
-from .analysis import Stats
-from .data_management import DataManager
-from .exceptions import EmptyIntervalException
+from npd_assignment.analysis import Stats
+from npd_assignment.data_management import DataManager
+from npd_assignment.exceptions import EmptyIntervalException
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         logging.error("The specified time interval is too restrictive: no data left. "
                       "GDP statistics are not available.")
     emission_increase_stats, emission_decrease_stats = stats.emission_change_stats()
-    if all(result.is_empty() for result in (emission_increase_stats, emission_decrease_stats)):
+    if all(result.empty for result in (emission_increase_stats, emission_decrease_stats)):
         logging.error("Cannot compute across-decade emission changes. "
                       "Most likely, there is no data available for the relevant years.")
     else:

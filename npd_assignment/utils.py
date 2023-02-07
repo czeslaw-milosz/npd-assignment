@@ -1,10 +1,9 @@
 import logging
+from typing import Any, Dict, Iterable, List, Set
 
 import pandas as pd
 
-from typing import Any, Dict, Iterable, List, Set
-
-from .config import CONFIG
+from npd_assignment.config import CONFIG
 
 
 def col_to_uppercase(df: pd.DataFrame, col_name: str) -> None:
