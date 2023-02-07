@@ -57,5 +57,6 @@ CONFIG = {
         "VIET NAM": "VIETNAM",
         "VENEZUELA, RB": "VENEZUELA",
         "YEMEN, REP.": "YEMEN",
-    }
+    },
+    "stats_top_k": 5,
 }
