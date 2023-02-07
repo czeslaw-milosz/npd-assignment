@@ -1,9 +1,10 @@
 CONFIG = {
     "non_countries": (
-        "AFE", "AFW", "ARB", "CEB", "CSS", "EAP", "EAR", "EAS", "ECA", "ECS", "EMU", "EUU", "FCS", "HIC", "HPC",
-        "IBD", "IBT", "IDA", "IDB", "IDX", "LAC", "LCN", "LDC", "LIC", "LMC", "LMY", "LTE", "MEA", "MIC", "MNA",
-        "NAC", "OED", "OSS", "PRE", "PSS", "PST", "SAS", "SSA", "SSF", "SST", "TEA", "TEC", "TLA", "TMN", "TSA",
-        "TSS", "UMC", "WLD",
+        "AFE", "AFW", "ARB", "CEB", "CSS", "EAP", "EAR", "EAS", "ECA", "ECS",
+        "EMU", "EUU", "FCS", "HIC", "HPC", "IBD", "IBT", "IDA", "IDB", "IDX",
+        "LAC", "LCN", "LDC", "LIC", "LMC", "LMY", "LTE", "MEA", "MIC", "MNA",
+        "NAC", "OED", "OSS", "PRE", "PSS", "PST", "SAS", "SSA", "SSF", "SST",
+        "TEA", "TEC", "TLA", "TMN", "TSA", "TSS", "UMC", "WLD",
     ),
     "standardized_country_names": {
         "ANTIGUA & BARBUDA": "ANTIGUA AND BARBUDA",
@@ -12,7 +13,8 @@ CONFIG = {
         "BRUNEI DARUSSALAM": "BRUNEI (DARUSSALAM)",
         "CAPE VERDE": "CABO VERDE",
         "CHINA (MAINLAND)": "CHINA",
-        "CONGO, DEM. REP.": "DEMOCRATIC REPUBLIC OF THE CONGO (FORMERLY ZAIRE)",
+        "CONGO, DEM. REP.": "DEMOCRATIC REPUBLIC OF THE CONGO "
+                            "(FORMERLY ZAIRE)",
         "CONGO, REP.": "CONGO",
         "CZECH REPUBLIC": "CZECHIA",
         "COTE D IVOIRE": "COTE D'IVOIRE",
