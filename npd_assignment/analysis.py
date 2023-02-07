@@ -69,9 +69,9 @@ class Stats:
         for df in (stats_recent, stats_ago):
             utils.restrict_column(df, "Country", common_countries)
 
-        logging.info("Calculating countries with largest emission changes per capita during last decade of data. "
-                     "Please note: only countries with data available for both years (most recent and a decade before) "
-                     "will be taken into consideration.")
+        logging.info("Calculating countries with largest emission changes per capita during last decade "
+                     "of available data. Please note: only countries with data available for both years "
+                     "(most recent and a decade before) will be taken into consideration.")
         stats_ago.sort_values("Country", inplace=True, na_position="last")
         stats_recent.sort_values("Country", inplace=True)
         # delta > 0 means increase in emissions

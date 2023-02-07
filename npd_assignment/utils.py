@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Dict, Iterable, List, Set
+from typing import Any, Dict, Iterable, List, Set, Tuple, Union
 
 import pandas as pd
 
@@ -33,6 +33,14 @@ def reshape_worldbank_df(df: pd.DataFrame, value_colname: str) -> pd.DataFrame:
 def standardize_country_names(df: pd.DataFrame, names_dict: Dict[str, str] = CONFIG["standardized_country_names"])\
         -> None:
     df["Country"].replace(names_dict, inplace=True)
+
+
+def reindex_grouped_table(df: pd.DataFrame, index_names: Union[List[str], Tuple[str]]) -> pd.DataFrame:
+    assert len(index_names) == 2
+    df.index = pd.MultiIndex.from_arrays(
+        [df.index.get_level_values(0), df.groupby(level=0).cumcount() + 1],
+        names=index_names)
+    return df
 
 
 def restrict_column(df: pd.DataFrame, col_name: str, allowed_values: Iterable[Any]) -> None:
