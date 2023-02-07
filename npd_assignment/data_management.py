@@ -15,11 +15,15 @@ class DataManager:
         self.gdp_path = gdp_path
         self.population_path = population_path
 
+        self._emission_df, self._gdp_df, self._population_df = [None] * 3
+        self.full_df = None
+
+    def load_data(self, preprocess: bool = True) -> None:
         self._emission_df, self._gdp_df, self._population_df = self._read_data(
             self.emissions_path, self.gdp_path, self.population_path
         )
-        self.full_df = None
-        self._preprocess_data()
+        if preprocess:
+            self._preprocess_data()
 
     def get_full_data(self) -> pd.DataFrame:
         self._make_full_dataset()

@@ -69,6 +69,7 @@ if __name__ == "__main__":
         gdp_path=args.gdp_file,
         population_path=args.population_file,
     )
+    data_manager.load_data()
     full_df = data_manager.get_full_data()
     logging.info("Calculating summary statistics...\n")
     stats = Stats(full_df)
