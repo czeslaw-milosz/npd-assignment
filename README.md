@@ -59,7 +59,7 @@ Results of profiling with cProfile can be found in this repository:
 
 
 ## Testing
-There is a basic test suite included in the package. Tests can be run within IDE
+There is a basic test suite included in the package. A coverage report can be found [here](coverage.txt). Tests can be run within IDE
 or using the following command:
 ```shell
 cd npd_assignment/test
