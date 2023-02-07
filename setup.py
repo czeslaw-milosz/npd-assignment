@@ -12,5 +12,6 @@ setup(
         "argparse",
         "pandas>=1.5",
         "pytest",
+        "tabulate",
     ],
 )
