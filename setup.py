@@ -10,8 +10,7 @@ setup(
     description="Final assignment for Data Analysis in Python course @ MIM UW",
     install_requires=[
         "argparse",
-        "numpy",
-        "pandas",
+        "pandas>=1.5",
         "pytest",
     ],
 )
