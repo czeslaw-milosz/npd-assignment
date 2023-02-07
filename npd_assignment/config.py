@@ -1,10 +1,10 @@
 CONFIG = {
-    "non_countries": [
+    "non_countries": (
         "AFE", "AFW", "ARB", "CEB", "CSS", "EAP", "EAR", "EAS", "ECA", "ECS", "EMU", "EUU", "FCS", "HIC", "HPC",
         "IBD", "IBT", "IDA", "IDB", "IDX", "LAC", "LCN", "LDC", "LIC", "LMC", "LMY", "LTE", "MEA", "MIC", "MNA",
         "NAC", "OED", "OSS", "PRE", "PSS", "PST", "SAS", "SSA", "SSF", "SST", "TEA", "TEC", "TLA", "TMN", "TSA",
         "TSS", "UMC", "WLD",
-    ],
+    ),
     "standardized_country_names": {
         "ANTIGUA & BARBUDA": "ANTIGUA AND BARBUDA",
         "BAHAMAS, THE": "BAHAMAS",
@@ -59,4 +59,11 @@ CONFIG = {
         "YEMEN, REP.": "YEMEN",
     },
     "stats_top_k": 5,
+    "stats_required_columns": (
+        "Country",
+        "Year",
+        "Population",
+        "Emissions [total metric tons]",
+        "GDP [current US$]",
+    )
 }

@@ -6,12 +6,17 @@ from typing import Tuple, Optional
 
 from . import utils
 from .config import CONFIG
+from .exceptions import MissingColumnsException
 
 
 class Stats:
     def __init__(self, df: pd.DataFrame) -> None:
         self.df = df
         self.top_k = CONFIG["stats_top_k"]
+        try:
+            assert all(col_name in self.df.columns for col_name in CONFIG["stats_required_columns"])
+        except AssertionError:
+            raise MissingColumnsException()
         self._precompute_columns()
 
     def _precompute_columns(self) -> None:
@@ -20,14 +25,8 @@ class Stats:
 
     def gdp_stats_per_year(self, year_range: Tuple[Optional[int], Optional[int]] = (None, None)) -> pd.DataFrame:
         stats = self.df[["Year", "Country", "GDP [current US$]", "GDP [current US$ per capita]"]]
-
-        lower, upper = year_range
-        if lower:
-            logging.info(f"Selecting years no earlier than {lower}...")
-            stats.query("Year >= @lower", inplace=True)
-        if upper:
-            logging.info(f"Selecting years no later than {upper}...")
-            stats.query("Year <= @upper", inplace=True)
+        if any(year_range):
+            utils.restrict_to_years_range(stats, year_range)
 
         logging.info(f"Calculating {self.top_k} countries with largest GDP per capita for each year."
                      f"Please note: if a country has no available data for a given year, "
@@ -39,14 +38,8 @@ class Stats:
 
     def emission_stats_per_year(self, year_range: Tuple[Optional[int], Optional[int]] = (None, None)) -> pd.DataFrame:
         stats = self.df[["Year", "Country", "Emissions [total metric tons]", "Emissions [metric tons per capita]"]]
-
-        lower, upper = year_range
-        if lower:
-            logging.info(f"Selecting years no earlier than {lower}...")
-            stats.query("Year >= @lower", inplace=True)
-        if upper:
-            logging.info(f"Selecting years no later than {upper}...")
-            stats.query("Year <= @upper", inplace=True)
+        if any(year_range):
+            utils.restrict_to_years_range(stats, year_range)
 
         logging.info(f"Calculating {self.top_k} countries with largest emissions per capita for each year."
                      f"Please note: if a country has no available data for a given year, "
@@ -72,7 +65,7 @@ class Stats:
         for df in (stats_recent, stats_ago):
             utils.restrict_column(df, "Country", common_countries)
 
-        logging.info("Calculating countries with largest emission changes per capita during last decade available in data. "
+        logging.info("Calculating countries with largest emission changes per capita during last decade of data. "
                      "Please note: only countries with data available for both years (most recent and a decade before) "
                      "will be taken into consideration.")
         stats_ago.sort_values("Country", inplace=True, na_position="last")

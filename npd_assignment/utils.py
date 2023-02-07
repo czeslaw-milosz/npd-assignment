@@ -1,3 +1,5 @@
+import logging
+
 import pandas as pd
 
 from typing import Any, Dict, Iterable, List, Set
@@ -36,3 +38,13 @@ def standardize_country_names(df: pd.DataFrame, names_dict: Dict[str, str] = CON
 
 def restrict_column(df: pd.DataFrame, col_name: str, allowed_values: Iterable[Any]) -> None:
     df.query(f"`{col_name}` in @allowed_values", inplace=True)
+
+
+def restrict_to_years_range(df: pd.DataFrame, year_range: Iterable[int]) -> None:
+    lower, upper = year_range
+    if lower:
+        logging.info(f"Selecting years no earlier than {lower}...")
+        df.query("Year >= @lower", inplace=True)
+    if upper:
+        logging.info(f"Selecting years no later than {upper}...")
+        df.query("Year <= @upper", inplace=True)
