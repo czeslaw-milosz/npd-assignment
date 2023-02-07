@@ -48,6 +48,9 @@ class DataManager:
         for df in (self._emission_df, self._gdp_df, self._population_df):
             utils.standardize_country_names(df)
         self._ensure_data_consistency()
+        self._emission_df["Emissions (total)"] *= 1000
+        self._emission_df.rename({"Emissions (total)": "Emissions [total metric tons]"}, axis=1, inplace=True)
+        self._gdp_df.rename({"GDP": "GDP [current US$]"}, axis=1, inplace=True)
 
     def _ensure_data_consistency(self) -> None:
         common_years = utils.get_common_subset("Year", self._emission_df, self._gdp_df, self._population_df)
