@@ -1,10 +1,10 @@
-from typing import Tuple
+from typing import Tuple, Optional
 
 from .config import CONFIG
 
 
 class EmptyIntervalException(Exception):
-    def __init__(self, interval: Tuple[int, int], *args) -> None:
+    def __init__(self, interval: Tuple[Optional[int], Optional[int]], *args) -> None:
         super().__init__(f"No data available for the requested year interval {interval}", *args)
 
 

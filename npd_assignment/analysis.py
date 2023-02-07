@@ -6,7 +6,7 @@ from typing import Tuple, Optional
 
 from . import utils
 from .config import CONFIG
-from .exceptions import MissingColumnsException
+from .exceptions import EmptyIntervalException, MissingColumnsException
 
 
 class Stats:
@@ -27,6 +27,9 @@ class Stats:
         stats = self.df[["Year", "Country", "GDP [current US$]", "GDP [current US$ per capita]"]]
         if any(year_range):
             utils.restrict_to_years_range(stats, year_range)
+        # if no data is left after year restriction, raise an exception
+        if stats.is_empty():
+            raise EmptyIntervalException(year_range)
 
         logging.info(f"Calculating {self.top_k} countries with largest GDP per capita for each year."
                      f"Please note: if a country has no available data for a given year, "
@@ -40,6 +43,8 @@ class Stats:
         stats = self.df[["Year", "Country", "Emissions [total metric tons]", "Emissions [metric tons per capita]"]]
         if any(year_range):
             utils.restrict_to_years_range(stats, year_range)
+        if stats.is_empty():
+            raise EmptyIntervalException(year_range)
 
         logging.info(f"Calculating {self.top_k} countries with largest emissions per capita for each year."
                      f"Please note: if a country has no available data for a given year, "
@@ -75,9 +80,9 @@ class Stats:
             stats_recent["Emissions [metric tons per capita]"].values \
             - stats_ago["Emissions [metric tons per capita]"].values
         top_increase = stats_recent.sort_values("delta", ascending=False)[["Country", "delta"]].rename({
-            "delta": "Difference in CO2 emissions [metric tons per capita]"
+            "delta": f"Difference in CO2 emissions [metric tons per capita] -- top {self.top_k} increase"
         }, axis=1).head(self.top_k)
         top_decrease = stats_recent.sort_values("delta", ascending=True)[["Country", "delta"]].rename({
-            "delta": "Difference in CO2 emissions [metric tons per capita]"
+            "delta": f"Difference in CO2 emissions [metric tons per capita] -- top {self.top_k} decrease"
         }, axis=1).head(self.top_k)
         return top_increase, top_decrease

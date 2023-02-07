@@ -9,14 +9,10 @@ from . import utils
 
 class DataManager:
 
-    def __init__(self, emissions_path: str, gdp_path: str, population_path: str,
-                 years_lower_bound: Optional[int], years_upper_bound: Optional[int]) -> None:
+    def __init__(self, emissions_path: str, gdp_path: str, population_path: str) -> None:
         self.emissions_path = emissions_path
         self.gdp_path = gdp_path
         self.population_path = population_path
-
-        self.years_lower_bound = years_lower_bound
-        self.years_upper_bound = years_upper_bound
 
         self._emission_df, self._gdp_df, self._population_df = self._read_data(self.emissions_path,
                                                                                self.gdp_path,
