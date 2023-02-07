@@ -70,12 +70,11 @@ def emission_change_stats(df: pd.DataFrame, top_k: int = 5) -> Tuple[pd.DataFram
                       f"no data corresponding to year {most_recent_year} - 10 = {decade_ago}.")
         return pd.DataFrame(), pd.DataFrame()
 
-    years = {most_recent_year, decade_ago}
-    stats.query("Year in @years", inplace=True)
+    utils.restrict_column(stats, "Year",  {most_recent_year, decade_ago})
     stats_recent, stats_ago = stats.query("Year == @most_recent_year"), stats.query("Year == @decade_ago")
     common_countries = utils.get_common_subset("Country", stats_recent, stats_ago)
-    stats_recent.query("Country in @common_countries", inplace=True)
-    stats_ago.query("Country in @common_countries", inplace=True)
+    for df in (stats_recent. stats_recent, stats_ago):
+        utils.restrict_column(df, "Country", common_countries)
 
     logging.info("Calculating countries with largest emission changes per capita during last decade available in data. "
                  "Please note: only countries with data available for both years (most recent and a decade before) "
