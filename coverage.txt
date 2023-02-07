@@ -1,0 +1,15 @@
+---------- coverage: platform linux, python 3.11.1-final-0 -----------
+Name                                                                        Stmts   Miss  Cover
+-----------------------------------------------------------------------------------------------
+/home/rj/PycharmProjects/npd_assignment/npd_assignment/__init__.py              3      0   100%
+/home/rj/PycharmProjects/npd_assignment/npd_assignment/analysis.py             57     20    65%
+/home/rj/PycharmProjects/npd_assignment/npd_assignment/config.py                1      0   100%
+/home/rj/PycharmProjects/npd_assignment/npd_assignment/data_management.py      53      0   100%
+/home/rj/PycharmProjects/npd_assignment/npd_assignment/exceptions.py            8      0   100%
+/home/rj/PycharmProjects/npd_assignment/npd_assignment/utils.py                29      3    90%
+__init__.py                                                                     0      0   100%
+test_analysis.py                                                               28      0   100%
+test_data_management.py                                                        41      0   100%
+test_utils.py                                                                  63      1    98%
+-----------------------------------------------------------------------------------------------
+TOTAL
