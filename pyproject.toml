@@ -5,6 +5,7 @@ extend-exclude = ".*config.py"
 
 [tool.pylint.main]
 jobs = 0
+ignore-patterns=".*test.*"
 [tool.pylint."MESSAGES CONTROL"]
 max-line-length = 79
 disable = "C0103,C0114"

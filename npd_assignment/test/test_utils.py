@@ -81,7 +81,6 @@ class TestColToUpperCase:
 
 
 class TestGetCommonSubset:
-
     def test_get_common_subset(self, gdp_df, emission_df):
         common = utils.get_common_subset("Year", gdp_df, emission_df)
         assert common == {2, 3, 7}
@@ -93,7 +92,6 @@ class TestGetCommonSubset:
 
 
 class TestRemoveNonCountries:
-
     @pytest.mark.parametrize(
         ("df", "expected_nrows"),
         [
@@ -109,7 +107,6 @@ class TestRemoveNonCountries:
 
 
 class TestReshapeWorldbankDf:
-
     def test_reshape_worldbank_df(self, worldbank_format_df):
         tmp = utils.reshape_worldbank_df(worldbank_format_df, "ASDF")
         assert tmp.shape == (9, 5)
@@ -117,7 +114,6 @@ class TestReshapeWorldbankDf:
 
 
 class TestStandardizeCountryNames:
-
     def test_standardize_country_names(self):
         tmp = pd.DataFrame({
             "Country": [name for name in CONFIG["standardized_country_names"]]
@@ -130,7 +126,6 @@ class TestStandardizeCountryNames:
 
 
 class TestRestrictColumn:
-
     def test_restrict_column(self, gdp_df, emission_df):
         utils.restrict_column(gdp_df, "Year", [2])
         assert gdp_df.shape[0] == 1
@@ -139,7 +134,6 @@ class TestRestrictColumn:
 
 
 class TestRestrictToYearsRange:
-
     @pytest.mark.parametrize(
         ("df", "year_range", "expected"),
         [
@@ -152,4 +146,3 @@ class TestRestrictToYearsRange:
     def test_restrict_column(self, df, year_range, expected):
         utils.restrict_to_years_range(df, year_range)
         assert df["Year"].tolist() == expected
-

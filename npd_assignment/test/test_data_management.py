@@ -31,7 +31,6 @@ def full_df():
 
 
 class TestDataManager:
-
     def test_init(self, raw_data_paths):
         dm = DataManager(*raw_data_paths)
         assert all((dm._emission_df is None,
@@ -101,4 +100,3 @@ class TestDataManager:
         tmp = dm.get_full_data()
         assert dm.full_df is not None
         assert tmp.compare(full_df).empty
-

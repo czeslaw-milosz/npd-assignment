@@ -19,7 +19,6 @@ def stats_df():
 
 
 class TestStats:
-
     def test_init(self):
         with pytest.raises(MissingColumnsException):
             tmp = Stats(pd.DataFrame({
@@ -48,6 +47,3 @@ class TestStats:
         tmp = Stats(stats_df)
         result = tmp.emission_change_stats()
         assert all(elt.empty for elt in result)
-
-
-

@@ -14,7 +14,7 @@ CONFIG = {
         "CAPE VERDE": "CABO VERDE",
         "CHINA (MAINLAND)": "CHINA",
         "CONGO, DEM. REP.": "DEMOCRATIC REPUBLIC OF THE CONGO "
-                            "(FORMERLY ZAIRE)",
+        "(FORMERLY ZAIRE)",
         "CONGO, REP.": "CONGO",
         "CZECH REPUBLIC": "CZECHIA",
         "COTE D IVOIRE": "COTE D'IVOIRE",
@@ -67,5 +67,5 @@ CONFIG = {
         "Population",
         "Emissions [total metric tons]",
         "GDP [current US$]",
-    )
+    ),
 }
