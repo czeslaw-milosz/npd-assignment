@@ -1,3 +1,21 @@
+"""Configuration dict for the package.
+
+ - `non_countries`: Tuple[str] specifying the country codes that should be
+ removed from data. The default list contains codes for all non-country
+ data points present in GDP and Population .csv files (mostly aggregated
+ regions like the EU, North Africa etc.).
+
+ - `standardized_country_names`: Dict[str, str] mapping country names to their
+ standardized form; used in data preprocessing. Assumes all country names are
+ already in uppercase.
+
+ - `stats_top_k`: int - how many top results per group to return in statistical
+ tables produced by the `analysis` module. Default: 5 (per task specification).
+
+ - `stats_required_columns`: Tuple[str] containing column names that must be
+ present in "clean" dataframe provided in the constructor of `Stats` object.
+"""
+
 CONFIG = {
     "non_countries": (
         "AFE", "AFW", "ARB", "CEB", "CSS", "EAP", "EAR", "EAS", "ECA", "ECS",
