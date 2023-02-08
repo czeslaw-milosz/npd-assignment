@@ -10,11 +10,7 @@ from npd_assignment import utils
 
 
 class DataManager:
-    """Object responsible for data handling.
-
-    Attributes:
-
-    """
+    """Object responsible for data handling."""
     def __init__(
         self, emissions_path: str, gdp_path: str, population_path: str
     ) -> None:

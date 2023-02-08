@@ -37,26 +37,28 @@ def get_common_subset(col_name: str, *args) -> Set[Any]:
 def remove_non_countries(
     df: pd.DataFrame, non_countries: List[str] = CONFIG["non_countries"]
 ) -> None:
-    """Remove all rows where the column `Country Code` has values in `non_countries`.
+    """Remove rows where `Country Code` column has values in `non_countries`.
 
     :param df: pd.DataFrame to be processed.
-    :param non_countries: list of 'illegal' values to be removed from the `Country Code` column.
+    :param non_countries: list of 'illegal' values to be removed
+    from the `Country Code` column.
     :return: None: removal is done in-place.
     """
     df.query("~(`Country Code` in @non_countries)", inplace=True)
 
 
 def reshape_worldbank_df(df: pd.DataFrame, value_colname: str) -> pd.DataFrame:
-    """Reshape a dataframe from wide to long format for compatibility with emission data and easier analysis.
+    """Reshape a dataframe from wide to long format for compatibility
+    with emission data and easier analysis.
 
     The reshaped dataframe is assumed to have only year columns except three
-    (`Country Code`, `Coountry`, `Indicator Name`). Years are gathered in the
+    (`Country Code`, `Country`, `Indicator Name`). Years are gathered in the
     newly added `Year` column; values per year are stored in new column
     with name specified as `value_colname`.
 
     :param df: pd.DataFrame to reshape.
     :param value_colname: name of the new column with values for each year.
-    :return: pd.DataFrame: the input dataframe reshape from wide to long format.
+    :return: pd.DataFrame: the input dataframe reshape from wide to long format
     """
     return pd.melt(
         df,
@@ -76,7 +78,7 @@ def standardize_country_names(
     dict included in `config.CONFIG`.
 
     :param df: pd.DataFrame to be processed.
-    :param names_dict: standardization dictionary: raw_form -> standardized_form.
+    :param names_dict: standardization dictionary: raw_form->standardized_form.
     :return: None: standardization is done in-place.
     """
     df["Country"].replace(names_dict, inplace=True)
@@ -115,10 +117,11 @@ def restrict_column(
 def restrict_to_years_range(
     df: pd.DataFrame, year_range: Iterable[int]
 ) -> None:
-    """Restrict dataframe so that all values in the column `Year` lay in `year_range`.
+    """Restrict dataframe so that all values in `Year`col  lay in `year_range`.
 
     :param df: pd.DataFrame to restrict.
-    :param year_range: two-element iterable specifying the lower and upper bounds of the range (inclusive).
+    :param year_range: two-element iterable specifying the lower and upper
+    bounds of the range (inclusive).
     :return: None: restricting is done in-place.
     """
     lower, upper = year_range
