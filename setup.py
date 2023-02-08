@@ -9,8 +9,9 @@ setup(
     license="LICENSE.txt",
     description="Final assignment for Data Analysis in Python course @ MIM UW",
     install_requires=[
-        "numpy",
-        "pandas",
+        "argparse",
+        "pandas>=1.5",
         "pytest",
+        "tabulate",
     ],
 )
