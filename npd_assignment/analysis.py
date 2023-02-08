@@ -15,8 +15,10 @@ from npd_assignment.exceptions import (
 
 class Stats:
     """Object responsible for computing statistic and summaries of the data."""
-    def __init__(self, df: pd.DataFrame, top_k: int = CONFIG["stats_top_k"]
-                 ) -> None:
+
+    def __init__(
+        self, df: pd.DataFrame, top_k: int = CONFIG["stats_top_k"]
+    ) -> None:
         """Initialize a Stats object with a pre-prepared dataset.
 
         Note that the dataset provided as argument to __init__ must already be
