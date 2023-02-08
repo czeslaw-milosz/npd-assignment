@@ -66,7 +66,12 @@ cd npd_assignment/test
 pytest .
 ```
 
-### Code formatting
+## Code formatting
 This project is autoformatted with [`black`](https://black.readthedocs.io/en/stable) 
 and quality-checked with [`pylint`](https://pylint.readthedocs.io/en/latest); 
 configuration used for both tools can be found in [`pyproject.toml`](./pyproject.toml)
+There is an autoformatting & codececk script in `codecheck.sh`; usage
+(assumes execution privilege on the file):
+```bash
+./codecheck.sh
+```

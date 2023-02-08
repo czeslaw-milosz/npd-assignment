@@ -1,0 +1,2 @@
+pylint --recursive=y .
+black .
